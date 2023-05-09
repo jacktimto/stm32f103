@@ -28,7 +28,7 @@ void OLED_Init(void)
     WriteCmd(0x10); //---set high column address
     WriteCmd(0x40); //--set start line address
     WriteCmd(0x81); //--set contrast control register
-    WriteCmd(0xff); //???? 0x00~0xff
+    WriteCmd(0xff); // 0x00~0xff
     WriteCmd(0xa1); //--set segment re-map 0 to 127
     WriteCmd(0xa6); //--set normal display
     WriteCmd(0xa8); //--set multiplex ratio(1 to 64)
@@ -92,7 +92,7 @@ void OLED_OFF(void)
 }
 
 
-void OLED_ShowStr(uint8_t x, uint8_t y, uint8_t ch[], uint8_t TextSize)
+void OLED_ShowStr(uint8_t x, uint8_t y, const uint8_t ch[], uint8_t TextSize)
 {
     uint8_t c = 0,i = 0,j = 0;
     switch(TextSize)
