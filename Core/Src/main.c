@@ -17,16 +17,23 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
+#include <stdio.h>
 #include "main.h"
 #include "i2c.h"
 #include "tim.h"
 #include "gpio.h"
-#include "hp203b.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "stm32_u8g2.h"
 #include "OLED.h"
+#include "hp203b.h"
+uint32_t temperature, pressure, altitude;
+char temperature_str;
+char pressure_str;
+char altitude_str;
+
+void measure(void );
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -77,7 +84,7 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-  OLED_Init();
+
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -93,21 +100,41 @@ int main(void)
   MX_I2C2_Init();
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
-  u8g2_t u8g2;
-  u8g2Init(&u8g2);
-  draw(&u8g2);
-  OLED_CLS();
+  OLED_Init();
+//  Hp203bObjectType hp203b;
+//  Hp203bInitialization(&hp203b,0xEC,ReceiveFromHp203b,TransmitToHp203b);
+//  HAL_I2C_Master_Transmit(&hi2c1,0xEC,&cmd,1,1000);
+//  HAL_Delay(1000);
+//  Hp203bReadTemperaturePressure(&hp203b);
+    u8g2_t u8g2;
+    u8g2Init(&u8g2);
+    draw(&u8g2);
+    OLED_CLS();
+
+
+
+
+
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
+
   /* USER CODE BEGIN WHILE */
+
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-  draw(&u8g2);
-  OLED_CLS();
+    measure();
+      OLED_ShowNum(0,4,pressure, 8,16);
+      OLED_ShowChar(77,0,'T',16);
+      OLED_ShowNum(0,2,altitude, 8,16);
+      OLED_ShowChar(77,2,'A',16);
+      OLED_ShowNum(0,0,temperature, 8,16);
+      OLED_ShowChar(77,4,'P',16);
+    HAL_Delay(1000);
 
   }
   /* USER CODE END 3 */
@@ -153,6 +180,23 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+void measure(void)
+{
+    uint8_t pdata[]= {0X06, 0x50};
+
+    HAL_I2C_Master_Transmit(&hi2c1,0xEE,&pdata[0],1,1000);//soft rest
+    HAL_Delay(500);
+    HAL_I2C_Master_Transmit(&hi2c1,0xEE,&pdata[1],1,1000);//select temp channel
+    HAL_Delay(300);
+    uint8_t rdata[9] = {1,2,3};
+    HAL_I2C_Mem_Read(&hi2c1,0xEF,0x30,1,rdata,3,1000);
+    HAL_I2C_Mem_Read(&hi2c1,0xEF,0x31,1,&rdata[3],3,1000);
+    HAL_I2C_Mem_Read(&hi2c1,0xEF,0x32,1,&rdata[6],3,1000);
+
+    pressure = rdata[0]*256*256 + rdata[1]*256 +rdata[2];
+    altitude = rdata[3]*256*256 + rdata[4]*256 +rdata[5];
+    temperature = rdata[6]*256*256 + rdata[7]*256 +rdata[8];
+}
 
 /* USER CODE END 4 */
 
