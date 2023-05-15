@@ -22,6 +22,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1779f33d-2a28-4fa0-9d96-700df066a33b" name="Changes" comment="add hp203b 相关文件&#10;add mpu6050">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/mpu6050.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/mpu6050.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,6 +165,8 @@
       <workItem from="1683936572378" duration="10531000" />
       <workItem from="1683959343288" duration="124000" />
       <workItem from="1683964135473" duration="358000" />
+      <workItem from="1683964499243" duration="2387000" />
+      <workItem from="1684144716985" duration="7000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1683170991024</created>
@@ -186,7 +189,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683964378252</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add hp203b 相关文件&#10;add mpu6050">
+      <created>1683964529479</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1683964529479</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
