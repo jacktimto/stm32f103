@@ -82,4 +82,3 @@ void Hp203bReadTemperaturePressure(Hp203bObjectType *hp)
     hp->cPressure=(rData[3]<<16)+(rData[4]<<8)+rData[5];
     hp->fPressure=(float)(hp->cPressure)/100.0f; //编译器会认为小数是double类型
 }
-
