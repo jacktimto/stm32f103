@@ -21,7 +21,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1779f33d-2a28-4fa0-9d96-700df066a33b" name="Changes" comment="2023.5.17 Hp203b传感器库功能实现">
-      <change beforePath="$PROJECT_DIR$/Core/Src/hp203b.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/hp203b.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Inc/hp203b.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/hp203b.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,7 +175,7 @@
       <workItem from="1684201666774" duration="3664000" />
       <workItem from="1684281116559" duration="87000" />
       <workItem from="1684281480081" duration="8991000" />
-      <workItem from="1684316287481" duration="404000" />
+      <workItem from="1684316287481" duration="524000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1683170991024</created>
@@ -226,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684316642678</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="2023.5.17 Hp203b传感器库功能实现">
+      <created>1684316704199</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1684316704199</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -57,3 +57,4 @@ void Hp203bConvertSetting(Hp203bObjectType *hp,uint8_t OSR,uint8_t channel);
 void Hp203bReadTemperaturePressure(Hp203bObjectType *hp);
 
 #endif
+
