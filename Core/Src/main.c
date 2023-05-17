@@ -17,7 +17,6 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-#include <stdio.h>
 #include "main.h"
 #include "i2c.h"
 #include "tim.h"
@@ -75,7 +74,7 @@ void SystemClock_Config(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+  Hp203bObjectType hp203b;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -101,6 +100,12 @@ int main(void)
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
   OLED_Init();
+  uint8_t cmd[1] = {0x40}; //选择4096 温度和气压通道
+  Hp203bInitialization(&hp203b, 0xEE, ReceiveFromHp203b, TransmitToHp203b);
+
+  HAL_I2C_Master_Transmit(&hi2c1,0xEE,&cmd[0],1,1000);//select 4096 temp +pressure
+    HAL_Delay(300);
+  Hp203bReadTemperaturePressure(&hp203b);
 //  Hp203bObjectType hp203b;
 //  Hp203bInitialization(&hp203b,0xEC,ReceiveFromHp203b,TransmitToHp203b);
 //  HAL_I2C_Master_Transmit(&hi2c1,0xEC,&cmd,1,1000);
@@ -127,14 +132,14 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    measure();
-      OLED_ShowNum(0,4,pressure, 8,16);
-      OLED_ShowChar(77,0,'T',16);
-      OLED_ShowNum(0,2,altitude, 8,16);
-      OLED_ShowChar(77,2,'A',16);
-      OLED_ShowNum(0,0,temperature, 8,16);
-      OLED_ShowChar(77,4,'P',16);
-    HAL_Delay(1000);
+//    measure();
+//      OLED_ShowNum(0,4,pressure, 8,16);
+//      OLED_ShowChar(77,0,'T',16);
+//      OLED_ShowNum(0,2,altitude, 8,16);
+//      OLED_ShowChar(77,2,'A',16);
+//      OLED_ShowNum(0,0,temperature, 8,16);
+//      OLED_ShowChar(77,4,'P',16);
+//    HAL_Delay(1000);
 
   }
   /* USER CODE END 3 */

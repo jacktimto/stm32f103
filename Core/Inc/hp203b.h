@@ -4,6 +4,13 @@
 
 #define SOFT_RESET 0X06  //软件复位
 
+#define OSR_128 128
+#define OSR_256 256
+#define OSR_512 512
+#define OSR_1024 1024
+#define OSR_2048 2048
+#define OSR_4096 4096
+
 #define CMD_READ_PT  0x10     //读取温度与气压
 #define CMD_READ_AT  0x11     //读取海拔与温度
 #define CMD_ANA_CAL 0x28  //内部模拟电路校准
@@ -45,6 +52,7 @@ void Hp203bInitialization(Hp203bObjectType *hp,
                           Ph203bReceiveType recieve,
                           Ph203bTransmitType transmit);
 
+void Hp203bConvertSetting(Hp203bObjectType *hp,uint8_t OSR,uint8_t channel);
 
 void Hp203bReadTemperaturePressure(Hp203bObjectType *hp);
 

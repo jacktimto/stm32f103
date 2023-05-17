@@ -7,7 +7,7 @@
 /*从Hp203b接收数据*/
 void ReceiveFromHp203b(Hp203bObjectType *hp,uint8_t *rData,uint16_t rSize)
 {
-    HAL_I2C_Master_Receive(&hi2c1,hp->deviceAddress,rData, rSize, 1000);
+    HAL_I2C_Master_Receive(&hi2c1,hp->deviceAddress,rData,rSize,1000);
 }
 
 /*向Hp203b传送数据*/
@@ -20,8 +20,8 @@ void TransmitToHp203b(Hp203bObjectType *hp,uint8_t *tData,uint16_t tSize)
 void Hp203bSoftReset(Hp203bObjectType *hp)
 {
     uint8_t pData[] = {SOFT_RESET};
-    HAL_I2C_Master_Transmit(&hi2c1, hp->deviceAddress, pData, I2C_MEMADD_SIZE_8BIT,1000);
-    HAL_Delay(100);
+    HAL_I2C_Master_Transmit(&hi2c1, hp->deviceAddress, pData, 1,1000);
+    HAL_Delay(100); //need delay after init
 }
 
 
@@ -53,31 +53,8 @@ void Hp203bInitialization(Hp203bObjectType *hp,
     }
 
     /*软复位命令*/
-    //Hp203bSoftReset(hp);
+    Hp203bSoftReset(hp);
 }
-
-///*读寄存器值*/
-//uint8_t Hp203bReadRegister(Hp203bObjectType *hp,uint8_t reg)
-//{
-//    uint8_t cmd = reg;
-//    uint8_t rData = 0;
-//
-//    hp->Transmit(hp,&cmd,1);
-//
-//    hp->Receive(hp,&rData,1);
-//
-//    return rData;
-//}
-//
-///*写寄存器值*/
-//void Hp203bWriteRegister(Hp203bObjectType *hp,uint8_t reg,uint8_t value)
-//{
-//    uint8_t cmd[2];
-//
-//    cmd[0]=CMD_ANA_CAL;
-//    cmd[1]=value;
-//    hp->Transmit(hp,cmd,2);
-//}
 
 /*读取温度和压力值*/
 void Hp203bReadTemperaturePressure(Hp203bObjectType *hp)
@@ -96,14 +73,14 @@ void Hp203bReadTemperaturePressure(Hp203bObjectType *hp)
     {
         hp->cTemperature=hp->cTemperature|0xFFF00000;
         temp=~(hp->cTemperature-0x01);
-        hp->fTemperature=0.0-(float)temp/100.0;
+        hp->fTemperature=0.0f-(float)temp/100.0f;
     }
     else
     {
-        hp->fTemperature=(float)(hp->cTemperature)/100.0;
+        hp->fTemperature=(float)hp->cTemperature/100.0f;
     }
 
     hp->cPressure=(rData[3]<<16)+(rData[4]<<8)+rData[5];
-    hp->fPressure=(float)(hp->cPressure)/100.0;
+    hp->fPressure=(float)(hp->cPressure)/100.0f; //编译器会认为小数是double类型
 }
 
