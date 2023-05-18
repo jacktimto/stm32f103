@@ -21,7 +21,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1779f33d-2a28-4fa0-9d96-700df066a33b" name="Changes" comment="2023.5.17 Hp203b传感器库功能实现">
-      <change beforePath="$PROJECT_DIR$/Core/Inc/hp203b.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/hp203b.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/hp203b.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/hp203b.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,11 +116,6 @@
   }
 }</component>
   <component name="RunManager" selected="OpenOCD Download &amp; Run.stm32f103">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="stm32f103.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="stm32f103" TARGET_NAME="stm32f103.elf" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="stm32f103" RUN_TARGET_NAME="stm32f103.elf">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -175,7 +172,9 @@
       <workItem from="1684201666774" duration="3664000" />
       <workItem from="1684281116559" duration="87000" />
       <workItem from="1684281480081" duration="8991000" />
-      <workItem from="1684316287481" duration="524000" />
+      <workItem from="1684316287481" duration="833000" />
+      <workItem from="1684378007146" duration="52000" />
+      <workItem from="1684400697159" duration="590000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1683170991024</created>
@@ -233,7 +232,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684316704199</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="2023.5.17 Hp203b传感器库功能实现">
+      <created>1684316823834</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1684316823835</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

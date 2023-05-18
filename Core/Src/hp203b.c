@@ -61,6 +61,7 @@ void Hp203bReadTemperaturePressure(Hp203bObjectType *hp)
 {
     uint8_t cmd=CMD_READ_PT;
     uint8_t rData[6];
+    uint32_t temp = 0;
 
     hp->Transmit(hp,&cmd,1);
 
